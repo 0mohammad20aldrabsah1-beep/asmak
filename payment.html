@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Asmak | Payment</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="header-inner">
+        <a href="index.html" class="brand">
+          <span class="brand-mark" aria-hidden="true">🐟</span>
+          <span>
+            <div class="brand-name">Asmak</div>
+            <div class="brand-tagline">Fresh daily to your door</div>
+          </span>
+        </a>
+        <nav class="main-nav" aria-label="Main navigation">
+          <a href="index.html">Home</a>
+          <a href="cart.html">Cart</a>
+          <a href="payment.html" class="is-current">Payment</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="page-wrap">
+      <nav class="checkout-steps" id="checkout-steps" aria-label="Checkout steps"></nav>
+
+      <header class="page-title">
+        <h1>Payment</h1>
+        <p>Review the total and enter your card details.</p>
+      </header>
+
+      <div class="page-layout page-layout--payment">
+        <section class="page-main">
+          <div class="panel panel--summary-first">
+            <h2 class="panel__title">Order items</h2>
+            <div id="payment-summary"></div>
+          </div>
+
+          <form class="form-card form-card--payment" id="payment-form" novalidate>
+            <h2 class="form-card__heading">Card details</h2>
+
+            <div class="form-field">
+              <label for="cardNumber">Card number <span class="req">*</span></label>
+              <input
+                id="cardNumber"
+                name="cardNumber"
+                type="text"
+                inputmode="numeric"
+                autocomplete="cc-number"
+                required
+                placeholder="0000 0000 0000 0000"
+                dir="ltr"
+                minlength="18"
+                maxlength="19"
+              />
+            </div>
+            <div class="form-row">
+              <div class="form-field">
+                <label for="expiry">Expiry date <span class="req">*</span></label>
+                <input
+                  id="expiry"
+                  name="expiry"
+                  type="text"
+                  inputmode="numeric"
+                  autocomplete="cc-exp"
+                  required
+                  placeholder="MM/YY"
+                  dir="ltr"
+                  minlength="5"
+                  maxlength="5"
+                />
+              </div>
+              <div class="form-field">
+                <label for="cvv">Security code (CVV) <span class="req">*</span></label>
+                <input
+                  id="cvv"
+                  name="cvv"
+                  type="password"
+                  inputmode="numeric"
+                  autocomplete="cc-csc"
+                  required
+                  placeholder="CVV"
+                  dir="ltr"
+                  minlength="3"
+                  maxlength="3"
+                />
+              </div>
+            </div>
+
+            <div class="customer-recap" id="customer-recap"></div>
+
+            <div class="form-actions">
+              <a href="checkout.html" class="btn btn-ghost">Back</a>
+              <button type="submit" class="btn btn-primary">Confirm payment</button>
+            </div>
+          </form>
+        </section>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <p><strong>Asmak</strong> — online seafood store</p>
+    </footer>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+    <script src="js/products.js"></script>
+    <script src="js/cart-store.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/telegram-notify.js"></script>
+    <script src="js/payment-page.js"></script>
+  </body>
+</html>
