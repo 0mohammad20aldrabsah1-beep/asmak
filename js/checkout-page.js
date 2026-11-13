@@ -4,7 +4,7 @@ function fillCustomerForm() {
   const form = document.getElementById("customer-form");
   if (!form) return;
   if (saved.name) form.name.value = saved.name;
-  if (saved.phone) setUaePhoneInputValue(form.phone, saved.phone);
+  if (saved.phone) setQatarPhoneInputValue(form.phone, saved.phone);
   if (saved.address) form.address.value = saved.address;
   if (saved.notes) form.notes.value = saved.notes;
 }
@@ -14,7 +14,7 @@ function bindCheckoutForm() {
   const summary = document.getElementById("checkout-summary");
   if (summary) summary.innerHTML = renderOrderSummary({ compact: true });
 
-  bindUaePhoneInput(form?.phone);
+  bindQatarPhoneInput(form?.phone);
 
   if (!getCartCount()) {
     showToast("Your cart is empty — add products first");
@@ -27,9 +27,9 @@ function bindCheckoutForm() {
   form?.addEventListener("submit", async (e) => {
     e.preventDefault();
 
-    const phoneLocal = parseUaeLocalNumber(form.phone.value);
+    const phoneLocal = parseQatarLocalNumber(form.phone.value);
     if (!phoneLocal) {
-      form.phone.setCustomValidity("Enter a valid UAE mobile (9 digits, e.g. 50 123 4567)");
+      form.phone.setCustomValidity("Enter a valid Qatar number (8 digits, e.g. 5512 3456)");
       form.phone.reportValidity();
       showToast("Invalid phone number");
       return;
@@ -40,7 +40,7 @@ function bindCheckoutForm() {
 
     const customer = {
       name: form.name.value.trim(),
-      phone: formatUaeInternational(phoneLocal),
+      phone: formatQatarInternational(phoneLocal),
       phoneLocal,
       address: form.address.value.trim(),
       notes: form.notes.value.trim(),
